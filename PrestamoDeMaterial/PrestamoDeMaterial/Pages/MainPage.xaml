@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PrestamoDeMaterial.MainPage" Title="Prestamo de Material">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Mostrar:" Grid.Column="0"/>
+            <Picker x:Name="pkrMostrar" SelectedIndexChanged="pkrMostrar_SelectedIndexChanged" Grid.Column="1">
+                <Picker.Items>
+                    <x:String>No entregados</x:String>
+                    <x:String>Entregados</x:String>
+                    <x:String>Todos</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="Agregar" x:Name="btnNuevoPrestamo" Clicked="btnNuevoPrestamo_Clicked" Grid.Column="2" BackgroundColor="Green" TextColor="White"/>
+        </Grid>
+        <ListView Grid.Row="1" x:Name="lstPrestamos" ItemSelected="lstPrestamos_ItemSelected" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Matricula}" Grid.Column="0" Grid.Row="0"/>
+                            <Label Text="{Binding NombreAlumno}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5"/>
+                            <Label Text="Prestamo" Grid.Column="0" Grid.Row="1"/>
+                            <Label Text="{Binding FechaHoraPrestamo, StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="Retorno" Grid.Column="2" Grid.Row="1"/>
+                            <Label Text="{Binding RetornoEstimado, StringFormat='{}{0:dd/MM/yyyy}'}" Grid.Column="3" Grid.Row="1"/>
+                            <Label Text="Estado" Grid.Column="4" Grid.Row="1"/>
+                            <Label Text="{Binding Estado}" Grid.Column="5" Grid.Row="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>

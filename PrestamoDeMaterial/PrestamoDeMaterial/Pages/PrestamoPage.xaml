@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:models="clr-namespace:PrestamoDeMaterial"
+             x:Class="PrestamoDeMaterial.PrestamoPage"
+             Title="Prestamo">
+    <ContentPage.BindingContext>
+        <models:PrestamoViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition Width=".1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+ 
+        
+        <Label Text="Matricula" Grid.Column="0" Grid.Row="0" /> 
+        <Label Text="Nombre" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"/>
+        
+        <Entry Text="{Binding Prestamo.Matricula}" Grid.Column="0"  Grid.Row="1" />
+        <Entry Text="{Binding Prestamo.NombreAlumno}" Grid.Column="1"  Grid.Row="1" Grid.ColumnSpan="5"/>
+
+        <Label Text="Entrega" Grid.Row="2" Grid.Column="0" />
+        <DatePicker Date="{Binding Prestamo.RetornoEstimado}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
+
+        <Label Text="Cant." Grid.Row="3" Grid.Column="0"/> 
+        <Label Text="Producto" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+        <Entry Text="{Binding Detalle.Cantidad}"  Keyboard="Numeric" Grid.Row="4" Grid.Column="0"/>
+        <Entry Text="{Binding Detalle.Descripcion}"  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Button Text="+" Grid.Row="4" Grid.Column="4" x:Name="btnAgregar" Clicked="btnAgregar_Clicked" BackgroundColor="Blue" TextColor="White"/>
+        <Button Text="-" Grid.Row="4" Grid.Column="5" x:Name="btnEliminar" Clicked="btnEliminar_Clicked" BackgroundColor="Red" TextColor="White"/>
+
+        <ListView Grid.Row="5" Grid.ColumnSpan="6" x:Name="lstDetalle"/>
+
+        <Label Text="Notas:" Grid.Row="6"/>
+        <Entry Text="{Binding Prestamo.Notas}" Grid.Row="7" Grid.ColumnSpan="6" />
+
+        <Button Text="Entregar" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" x:Name="btnEntregar" Clicked="btnEntregar_Clicked" BackgroundColor="Green" TextColor="White"/>
+
+        <Button Text="Guardar" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" x:Name="btnGuardar" Clicked="btnGuardar_Clicked" BackgroundColor="Blue" TextColor="White"/>
+        <Button Text="Eliminar" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="3" x:Name="btnBorrar" Clicked="btnBorrar_Clicked" BackgroundColor="Red" TextColor="White" />
+    </Grid>
+</ContentPage>
